@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, inital-scale=1.0">
@@ -6,35 +7,37 @@
     <title>Hackathon</title>
 </head>
 <body>
-    <h1>Fulfillment Center Package Upload Site</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5 text-center">
+                <h1>Fulfillment Center Package Upload Site</header>
 
-    <form method = "post" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
+                    <form method = "post" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                
+                        {% for error in form.photo.errors %}
+                            <span style="color:red;">{{ error }}</span>
+                        {% endfor %}
+                
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                {{ form.photo(class="form-control") }}
+                            </div>
+                            <div class="col-auto">
+                                {{ form.submit(class="btn btn-success") }}
+                            </div>
+                        </div>
+                    </form>
 
-        {% for error in form.photo.errors %}
-            <span style="color:red;">{{ error }}</span>
-        {% endfor %}
+                    {% if file_url %}
+                        <div class="mt-5">
+                            <img src="{{ file_url }}" style="width: 400px;">
+                        </div>
+                    {% endif %}
 
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                {{ form.photo(class="form-control") }}
-            </div>
-            <div class="col-auto">
-                {{ form.submit(class="btn btn-success") }}
             </div>
         </div>
-    </form>
-    {% if file_url %}
-        <div class="mt-5">
-            <img src="{{ file_url }}" style="width: 400px;">
-        </div>
-    {% endif %}
+    </div>
 </body>
-
-<style>
-    header{
-    text-align: center;
-    font-size: 40px;
-}
-</style>
+</html>
 

@@ -6,11 +6,12 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms import SubmitField
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asldfkjlj'
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
 
-photos = UploadSet('photo', IMAGES)
+photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 
 class UploadForm(FlaskForm):
